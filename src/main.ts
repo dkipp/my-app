@@ -7,7 +7,7 @@ if (true) { // was: !is.development
 	// Note: Validate it with https://csp-evaluator.withgoogle.com after doing changes
 	setContentSecurityPolicy(`
 		default-src 'none';
-		script-src 'self';
+		script-src 'self' 'unsafe-inline';
 		img-src 'self' data:;
 		style-src 'self' 'unsafe-inline';
 		font-src 'self';
@@ -33,6 +33,9 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    },
   });
 
   // and load the index.html of the app.
